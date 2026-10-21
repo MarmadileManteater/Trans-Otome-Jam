@@ -1,0 +1,121 @@
+name: "Build RPG Maker MZ Game"
+on: push
+
+jobs:
+  export-windows:
+    name: Windows Export
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Download nw.js
+        run: |
+          bash ./.github/workflows/fetch_nwjs.sh win-x64
+      - name: Windows Build
+        if: env.PROJECT_PATH != '' && env.ENABLE_BUILD == 1
+        run: |
+          cp -r $PROJECT_PATH/* ./win-x64
+          cp ./licenses/* ./win-x64
+          mv ./win-x64/nw.exe ./win-x64/Game.exe
+          rm ./win-x64/game.rmmzproject
+          bash ./.github/workflows/cull.sh ./win-x64
+      - name: Upload Artifact
+        if: env.PROJECT_PATH != '' && env.ENABLE_BUILD == 1
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_windows
+          path: win-x64
+
+  export-linux:
+    name: Linux Export
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Download nw.js
+        run: |
+          bash ./.github/workflows/fetch_nwjs.sh linux-x64
+      - name: Linux Build
+        if: env.PROJECT_PATH != '' && env.ENABLE_BUILD == 1
+        run: |
+          cp -r $PROJECT_PATH/* ./linux-x64
+          mv ./linux-x64/nw ./linux-x64/Game
+          cp ./licenses/* ./linux-x64
+          rm ./linux-x64/game.rmmzproject
+          bash ./.github/workflows/cull.sh ./linux-x64
+      - name: Upload Artifact
+        if: env.PROJECT_PATH != '' && env.ENABLE_BUILD == 1
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_linux
+          path: linux-x64
+
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Build
+        if: env.PROJECT_PATH != '' && env.ENABLE_BUILD == 1
+        run: |
+          cp -r $PROJECT_PATH ./web
+          cp ./licenses/* ./web
+          rm ./web/game.rmmzproject
+          bash ./.github/workflows/cull.sh ./web
+      - name: Upload Artifact
+        if: env.PROJECT_PATH != '' && env.ENABLE_BUILD == 1
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_web
+          path: web
+
+  push-to-itch:
+    name: Push to Itch.io
+    runs-on: ubuntu-latest
+    needs: [export-linux, export-windows, export-web]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Set environment variables
+        run: 
+          |
+          bash ./.github/workflows/get_json_environment_variables.sh ./project.json
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v6
+      - name: Download Butler
+        if: env.ITCH_USER != '' && env.ITCH_PROJECT_STUB != '' && env.ENABLE_PUBLISH == 1
+        run: |
+          curl -Lo ./butler.zip "https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default"
+          unzip ./butler.zip
+      - name: Load API key from secrets
+        if: env.ITCH_USER != '' && env.ITCH_PROJECT_STUB != '' && env.ENABLE_PUBLISH == 1
+        run: |
+          mkdir -p ~/.config/itch/
+          echo "${{ secrets.ITCH_API_KEY }}" >> ~/.config/itch/butler_creds
+      - name: Push to itch
+        if: env.ITCH_USER != '' && env.ITCH_PROJECT_STUB != '' && env.ENABLE_PUBLISH == 1
+        run: |
+          ./butler push "${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_web" $ITCH_USER/$ITCH_PROJECT_STUB:${{ env.CHANNEL_PREFIX }}web --userversion ${{ env.VERSION }}.${{ github.run_number }}
+          ./butler push "${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_windows" $ITCH_USER/$ITCH_PROJECT_STUB:${{ env.CHANNEL_PREFIX }}win --userversion ${{ env.VERSION }}.${{ github.run_number }}
+          ./butler push "${{ env.EXPORT_NAME }}_${{ env.VERSION }}_${{ github.run_number }}_linux" $ITCH_USER/$ITCH_PROJECT_STUB:${{ env.CHANNEL_PREFIX }}linux --userversion ${{ env.VERSION }}.${{ github.run_number }}
