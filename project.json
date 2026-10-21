@@ -1,10 +1,10 @@
 {
     "export_name": "rpgmaker_game",
-    "version": "1.0",
+    "version": "0.1",
     "project_path": "",
-    "itch_user": "",
-    "itch_project_stub": "",
-    "channel_prefix": "",
-    "enable_build": 1,
+    "itch_user": "marmadilemanteater",
+    "itch_project_stub": "trans-otome-jam",
+    "channel_prefix": "dev-",
+    "enable_build": 0,
     "enable_publish": 0
 }
