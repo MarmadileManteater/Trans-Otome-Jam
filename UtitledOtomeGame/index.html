@@ -12,21 +12,5 @@
     </head>
     <body style="background-color: black">
         <script type="text/javascript" src="js/main.js"></script>
-        <script>
-            // 🙇‍♀️ i know this is not the right way to do this,
-            // plz forgive me
-            // INTENDED FOR TESTING IN A WEB BROWSER
-            var interval = setInterval(function () {
-                // makes the game window stretch
-                if ('Graphics' in window) {
-                    try {
-                        Graphics._switchStretchMode();
-                        clearInterval(interval)
-                    } catch {
-                        console.warn("whoops")
-                    }
-                }
-            }, 10) 
-        </script>
     </body>
 </html>
