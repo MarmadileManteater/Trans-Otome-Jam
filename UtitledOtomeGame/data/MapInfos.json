@@ -1,10 +1,10 @@
 [
 null,
 {"id":1,"expanded":false,"name":"MAP001","order":1,"parentId":0,"scrollX":614.2222222222222,"scrollY":410.22222222222223},
-{"id":2,"expanded":true,"name":"ForestTilesetTest","order":2,"parentId":0,"scrollX":614.2222222222222,"scrollY":410.22222222222223,"quick":false},
-{"id":3,"expanded":true,"name":"CaveTilesetTest","order":7,"parentId":0,"scrollX":1036.5,"scrollY":692.25,"quick":false},
+{"id":2,"expanded":true,"name":"ForestTilesetTest","order":2,"parentId":0,"scrollX":614.2222222222222,"scrollY":492.8888888888889,"quick":false},
+{"id":3,"expanded":true,"name":"CaveTilesetTest","order":7,"parentId":0,"scrollX":614.2222222222222,"scrollY":410.22222222222223,"quick":false},
 {"id":4,"expanded":true,"name":"Forest","order":6,"parentId":2,"scrollX":1036.4444444444443,"scrollY":1205.7777777777778,"quick":false},
-{"id":5,"expanded":true,"name":"Forest","order":5,"parentId":2,"scrollX":1036.4444444444443,"scrollY":1708.888888888889,"quick":false},
+{"id":5,"expanded":true,"name":"Forest","order":5,"parentId":2,"scrollX":985.1999999999999,"scrollY":1558.1999999999998,"quick":false},
 {"id":6,"expanded":false,"name":"Forest","order":4,"parentId":2,"scrollX":1036.5,"scrollY":692.25,"quick":false},
 {"id":7,"expanded":false,"name":"Campsite","order":3,"parentId":2,"scrollX":614.2222222222222,"scrollY":445.77777777777777,"quick":false}
 ]
