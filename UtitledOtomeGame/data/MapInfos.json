@@ -5,6 +5,6 @@ null,
 {"id":3,"expanded":true,"name":"CaveTilesetTest","order":5,"parentId":0,"scrollX":614.2222222222222,"scrollY":410.22222222222223,"quick":false},
 {"id":4,"expanded":true,"name":"Cave","order":6,"parentId":3,"scrollX":0,"scrollY":0,"quick":false},
 {"id":5,"expanded":false,"name":"Intro","order":7,"parentId":0,"scrollX":816,"scrollY":624,"quick":false},
-{"id":6,"expanded":false,"name":"Forest","order":4,"parentId":2,"scrollX":922,"scrollY":1472,"quick":false},
+{"id":6,"expanded":false,"name":"Forest","order":4,"parentId":2,"scrollX":832,"scrollY":1152,"quick":false},
 {"id":7,"expanded":false,"name":"Campsite","order":3,"parentId":2,"scrollX":816,"scrollY":624,"quick":false}
 ]
