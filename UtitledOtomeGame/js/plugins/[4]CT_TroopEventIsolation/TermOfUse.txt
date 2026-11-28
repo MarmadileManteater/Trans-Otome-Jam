@@ -1,0 +1,82 @@
+[4]CT_TroopEventIsolation
+-------------------------------------------------
+
+Author
+------
+- Plugin Name: [4]CT_TroopEventIsolation
+- Brand      : Cynthia Tools
+- Author     : Cynthia
+
+License
+-------
+- You MAY:
+  - Use this plugin in commercial and non-commercial RPG Maker MZ projects.
+  - Edit the plugin for your own projects.
+  - Bundle this plugin inside a demo project included with your game or tool.
+  - Showcase screenshots/videos of the plugin in action.
+
+- You MAY NOT:
+  - Redistribute the raw plugin file as a standalone resource for free or paid,
+    outside of the official store(s) where you acquired it.
+  - Claim authorship of the plugin itself.
+  - Resell or repackage this plugin as your own plugin product.
+
+- You MAY:
+  - Include modified versions of this plugin in your game project
+    (compiled or obfuscated is fine),
+    as long as the original plugin is not re-sold as a separate plugin product.
+
+Attribution
+-----------
+Attribution is appreciated but not strictly required in your game credits.
+If you wish to credit, you can use:
+- "Credits Cynthia Tools"
+
+Engine Scope
+------------
+- This plugin is designed for:
+  - RPG Maker MZ
+- No guarantee of compatibility with:
+  - RPG Maker MV (or older engines)
+  - Other game engines
+
+Compatibility
+-------------
+- This plugin may conflict with other plugins that:
+  - Strongly modify picture handling.
+  - Replace Scene_Map / Scene_Battle input handling.
+  - Replace Sprite_Picture behavior.
+
+- If you encounter issues, try:
+  - Changing the plugin order in the plugin manager.
+  - Testing in a minimal project with fewer plugins.
+
+Disclaimer
+----------
+- This plugin is provided "as is", without warranty of any kind.
+- The author(s) are not responsible for:
+  - Any data loss, project corruption, or other damages.
+  - Issues arising from improper installation, modification, or conflicts
+    with third-party plugins.
+
+- Always:
+  - Make backups of your project before adding or updating plugins.
+  - Test in a separate copy of your project when changing plugin setups.
+
+Intellectual Property
+---------------------
+- [2]CT_CooldownSystem is an original work and is not affiliated with,
+  endorsed by, or derived from any third-party plugin creators such as VisuStella.
+- All similarities to other plugins are limited to generic functionality
+  commonly found in UI/button systems (e.g. picture clicks, event triggers).
+
+Contact & Support
+-----------------
+- For bug reports or questions, please use the contact / comment section
+  of the store page where you purchased this plugin.
+- Please include:
+  - RPG Maker MZ version.
+  - Plugin list screenshot.
+  - Steps to reproduce the issue.
+
+visit: https://cynthiatool.itch.io/ for more plugins and tools

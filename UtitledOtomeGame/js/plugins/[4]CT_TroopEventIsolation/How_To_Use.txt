@@ -1,0 +1,100 @@
+## Step 1: Install the plugin
+
+1. Copy `[4]CT_TroopEventIsolation.js` into your project:
+/js/plugins/
+
+yaml
+Copy code
+
+2. Open RPG Maker MZ
+3. Go to **Plugin Manager**
+4. Add the plugin to the list
+
+---
+
+## Step 2: Set the correct placement
+
+Make sure the plugin is placed at **position [4]**, above any plugin that:
+
+- Uses troop battle events
+- Adds boss mechanics
+- Adds battle phases
+- Adds battle UI systems
+
+Example order:
+
+[1] CT_DevModeManager
+[4] CT_TroopEventIsolation
+[5] CT_PictureEventBinder
+[6] CT_BossMechanicSystem
+
+yaml
+Copy code
+
+This step is important.
+
+---
+
+## Step 3: That’s it
+
+There is **nothing else to configure**.
+
+- No parameters
+- No switches
+- No variables
+- No event changes required
+
+Existing troop events will automatically behave correctly.
+
+---
+
+## What changes after installation?
+
+Before:
+- Troop events could trigger in the wrong troop if conditions matched
+
+After:
+- Each troop event page only runs for its own troop
+- Boss logic stays with the boss
+- Turn events behave predictably
+- Battle systems become stable and reliable
+
+---
+
+## When should you use this plugin?
+
+You should use this plugin if you:
+
+- Create boss battles
+- Use turn-based phases
+- Rely on troop event logic
+- Build system-heavy battle mechanics
+- Want correct, predictable engine behavior
+
+---
+
+## When is this plugin unnecessary?
+
+If your project:
+- Uses only very simple battles
+- Has no troop event logic
+- Does not use turn / HP conditions
+
+Even then, it is still safe to keep enabled.
+
+---
+
+## Troubleshooting
+
+**Q: Will this break my existing troop events?**  
+A: No. It only prevents incorrect activation.
+
+**Q: Does this affect performance?**  
+A: No. The check is minimal and only runs during page evaluation.
+
+**Q: Can I bundle this with other plugins?**  
+A: Yes. Recommended for system plugins.
+
+---
+
+visit: https://cynthiatool.itch.io/ for more plugins and tools
